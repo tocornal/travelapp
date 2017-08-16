@@ -1,0 +1,41 @@
+<% if notice != nil %>
+  <p id='notice' class="alert alert-success" role="alert">
+    <%= notice %>
+  </p>
+<% end %>
+
+<ul class="nav nav-pills" role="tablidst">
+  <li><%= link_to "All", destinations_path %> </li>
+  <% @my_countries.each do |c| %>
+    <li><%= link_to "#{c.country}", controller:"destinations", country: "#{c.country}"%></li>
+
+  <% end %>  
+</ul>
+
+<h1>My Destination Wish List</h1>
+
+<div class="row">
+    <% @destinations.each do |destination| %>
+    <div class="col-md-4">
+      <div class="panel panel-defaut">
+        <div class="panel-body">
+          <img src="<%= destination.img %>" alt="ciudad" class="img-responsive center-block">
+          <h2><%= destination.city %></h2>
+          <h3><%= destination.country %></h3>
+          <p><%= destination.description %></p>
+          <div class="btn-group">
+            <%= link_to 'Show', destination, class:'btn btn-default' %>
+            <% if user_signed_in? %>
+            <%= link_to 'Edit', edit_destination_path(destination), class:'btn btn-default' %>
+            <%= link_to 'Destroy', destination, method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-default' %>
+           <% end %>
+         </div>
+        </div>
+      </div>
+    </div>
+
+    <% end %>
+</div>
+<% if user_signed_in? %>
+<%= link_to 'New Destination', new_destination_path, class: 'btn btn-primary' %>
+<% end %>

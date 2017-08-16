@@ -1,0 +1,30 @@
+como instalar 
+1./ copiar gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
+2./ bundle install
+3./ ir al sitio
+4./ copiar en esta ruta app/assets/stylesheets/application.scss
+5./ @import "bootstrap-sprockets";
+@import "bootstrap";
+6./ renombrar css a scss
+7./ Eliminar  
+*= require_tree .
+ *= require_self
+ 7./ en javacript/application.js copiar //= require bootstrap-sprockets sobre //= require jquery
+ 8./ en view/layouts/application.html agregar una div class container en yield (carga todas las vistas de rails)
+ 9./ crear scaffold $  rails g scaffold Destination city:string country:string description:text
+ 10./ rake db:migrate
+ 
+ 
+ Login de usuarios
+ DEVISE
+ 
+ gem 'devise', '~> 4.3'  (agragar a gemfile)
+ bundle install
+ rails generate devise:install
+ fijarse en las notas 
+ 1./ agregar antes del end config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+ 2./ pide indicar algo como root to:
+ 3./ notificiciones
+ 4./ crear g y reemplazar MODEL por User
+ 5 ejecutar rake db:migrate
+ 6./ rails g devise:views (crear vistas)
